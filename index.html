@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>
+    Swagger UI
+  </title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
+  <link href='include/css/highlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='include/css/atelier-dune.light.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='include/css/rest_framework_swagger.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='include/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+
+  <style type='text/css'>
+    *      {margin:0; padding:0;}
+    body   {position:absolute; width:100%; height:100%;overflow:hidden}
+    #main  {height:100%; padding:60px 0 0; box-sizing:border-box;}
+    #head  {position:absolute; width:100%; height:60px;}
+    #left  {float:left; width:15%; min-width:70px; height:100%; overflow-y:scroll;}
+    #right {height:100%; overflow-y:scroll;}
+  </style>
+</head>
+
+
+<body>
+<div id='head'>
+  <div id='header'>
+    <div class="swagger-ui-wrap">
+      <a id="logo" href="/">InterSIS</a>
+      <form id='api_selector'>
+        <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="django-rest-swagger">
+    <div class="swagger-ui-wrap">
+      &nbsp;
+    </div>
+  </div>
+</div>
+
+
+<div id='main'>
+            <div id='left'>
+                <br style="line-height:20px">
+                <a type="button" class="btn btn-primary btn-xs left-nav-primary" href="#introduction-header">Introduction</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#introduction-what">What is InterSIS?</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#introduction-who">Who is this Guide for?</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#introduction-why">Why use InterSIS?</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#introduction-technical-definitions">Technical Definitions</a><br>
+
+                <a type="button" class="btn btn-primary btn-xs left-nav-primary" href="#getting-started-header">Getting Started</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#getting-started-overview">Overview</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#getting-started-developer-guides">Developer Guides</a><br>
+
+                <a type="button" class="btn btn-primary btn-xs left-nav-primary" href="#authentication-header">Authentication</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#single-sign-on">Single Sign-On</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#server-discovery">Server Discovery</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#client-registration">Client Registration</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#user-authentication">User Authentication</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#user-identification">User Identification</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#subsequent-visits">Subsequent Visits</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#authentication-endpoints">Authentication Endpoints</a><br>
+
+                <a type="button" class="btn btn-primary btn-xs left-nav-primary" href="#data-header">Data</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#resource_sites">Sites</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#resource_staff">Staff</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#resource_students">Students</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#resource_guardians">Guardians</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#resource_courses">Courses</a><br>
+                <a type="button" class="btn btn-default btn-xs left-nav-secondary" href="#resource_sections">Sections</a><br>
+
+                <a type="button" class="btn btn-primary btn-xs left-nav-primary" href="#account-management-header">Account Management</a><br>
+
+                <a type="button" class="btn btn-primary btn-xs left-nav-primary" href="#roadmap-header">Development Roadmap</a><br>
+            </div>
+            <div id='right'>
+
+
+  <div id="message-bar" class="swagger-ui-wrap">
+    &nbsp;
+  </div>
+  <div id="swagger-container">
+      <div id="swagger-ui-container" class="swagger-ui-wrap" style="display:none">
+
+      </div>
+
+      <div id="content-div-container" class="swagger-ui-wrap">
+
+          <div id=introduction-header style='padding-top:20px'><h1>Introduction</h1></div>
+          <hr>
+
+          <div id="introduction-content">
+
+              <h2 id="introduction-what">What is InterSIS?</h2>
+
+              <p style="font-size:1.15em">InterSIS helps software developers and school districts hold student information in a single, secure place. InterSIS verifies the identity of students,
+              staff, and guardians, and controls what information any of these users can see. InterSIS lets districts share this information
+              with educational software applications.</p>
+
+              <p>InterSIS allows users to choose where to store sensitive student information: a school district could maintain their own
+              InterSIS instance; a software developer could contract an experienced third-party to secure student information for districts
+              that don't have InterSIS, or host an instance itself; a state government could host and secure sensitive student information for all of its public
+              schools.</p>
+
+              <p>InterSIS includes software libraries that help developers easily access student information irrespective
+              of where it is stored. And InterSIS is free and open source: it doesn't cost schools any money and it doesn't cost developers any money.</p>
+
+              <div class="alert alert-warning" role="alert"><p><b>Technical Description:</b> InterSIS is a backend for student information
+              and educator information and authentication, using OAuth 2.0. InterSIS delivers resources over a RESTful API using JSON.</p>
+              <p>Software developers can use InterSIS to manage student data within their own applications,
+              or receive permissioned access to a customer's instance if that customer already uses InterSIS.</p>
+              </div>
+
+              <div class="alert alert-danger" role="alert"><p>This documentation is <b>under development</b>. The InterSIS
+              specification and implementation are <b>under development</b>.</p>
+              <p>Some documentation sections may be missing or incomplete. Text decorated with <span style="text-decoration:line-through">
+              line-through</span> should be read as suggestive. Some features described in the documentation may not
+              yet be implemented.</p></div>
+              <h2 id="introduction-who">Who is this Guide for?</h2>
+              <p>This guide is for educational software developers who would like to use InterSIS to retrieve
+              or store student information.</p>
+
+              <h2 id="introduction-why">Why use InterSIS?</h2>
+              <ol>
+                  <li>
+                      <p style="text-decoration: underline">Reduce Development Overhead</p>
+                      <p style="font-style:italic">Class Definitions and ORM</p>
+                      <p>How many times have you written a class definition for a student? Our SDKs include class definitions
+                      and ORM for all of the data types&mdash;students, staff, sites, courses, sections, etc.&mdash; described
+                      below. If we have an SDK for your language or platform, integration with InterSIS can be as easy
+                      as executing a single command in your package manager:</p>
+                      <pre>&gt; pip install django-intersis</pre>
+                      <p>After including InterSIS in your project, access objects in your own native ORM:</p>
+                      <pre>these_students = this_course.students.all()</pre>
+                      <p style="font-style:italic">Authentication</p>
+                      <p>InterSIS provides authentication services via OAuth 2.0. The SDKs include the basic
+                      InterSIS OAuth 2.0 workflow.</p>
+                      <p style="font-style:italic">Permissions</p>
+                      <p>Each request you make for InterSIS resources includes the identity of the
+                      end-user for whom you are making that request. InterSIS considers the privileges and relationships
+                      of that user in fulfilling the request. For example, a teacher will not be given biographical
+                      information for a student that they do not teach.</p>
+                  </li>
+                  <li>
+                      <p style="text-decoration: underline">Reduce FERPA liability</p>
+                      <p>Educational software developers who handle personally identifiable student information have a duty
+                      under the Federal Education Rights and Privacy Act (FERPA) to handle that information securely.
+                      In his 2015 State of the Union Address, President Obama affirmed a commitment to maintaining the
+                      security of digital student information.
+                      InterSIS authenticates all end-users via OAuth 2.0 and manages their access to sensitive information.</p>
+
+                      <p>Your software can request access to as much or as little personally identifiable student information
+                      as you require. Here's the response you might receive from <code>/students/6ukarkb5wbuk5tbawrypdkexde/</code>
+                      with full <code>read</code> scope:</p>
+
+                      <pre class=".pre-scrollable">
+{
+  "id": "6ukarkb5wbuk5tbawrypdkexde",
+  "hispanic_ethnicity": null,
+  "race": null,
+  "sites": [
+    "lr4baqnj4ggaapzlexmlyvruw4"
+  ],
+  "sections": [
+    "lr4baqnj4ggaapzlexmlyvruw4"
+  ],
+  "family_names": "Smith",
+  "given_names": "Johnny",
+  "birth_date": "1999-04-24",
+  "sex": "M",
+  "profile_name": "Grizzly84",
+  "school_student_id": "248352",
+  "state_student_id": "47832891038475",
+  "guardians": []
+}
+                      </pre>
+
+                      <p>whereas software which had negotiated only the <code>read-student-profile-names</code> scope would receive:</p>
+
+                      <pre class=".pre-scrollable">
+{
+  "id": "6ukarkb5wbuk5tbawrypdkexde",
+  "profile_name": "Grizzly84",
+}
+                      </pre>
+
+                      <p>The less information your software can access, the lighter your burden under FERPA. </p>
+
+
+                  </li>
+                  <li>
+                      <p style="text-decoration: underline">Reduce User Adoption Overhead</p>
+                      <p>Eliminate account creation and rostering from your user-adoption workflow. If a new teacher user has
+                      an existing InterSIS instance, they can grant your application privileges to their existing class roster
+                      and student accounts in seconds. When students log into your site, they authenticate via OAuth with the
+                      InterSIS instance too, and InterSIS will provide your application with the information needed to associate
+                      each student with their teacher's account.</p>
+                  </li>
+
+              </ol>
+
+              <h2 id="introduction-technical-definitions">Technical Definitions</h2>
+
+              <p>This document may use the following definitions, from the <a href="https://tools.ietf.org/html/rfc6749">
+              OAuth 2.0 RFC 6749</a>:</p>
+
+              <table class="table table-striped">
+                  <tr>
+                      <th class="col-md-2">Term</th>
+                      <th class="col-md-7">Definition</th>
+                      <th class="col-md-3">Examples</th>
+                  </tr>
+                  <tr>
+                      <td>resource owner</td>
+                      <td>An entity capable of granting access to a protected resource.
+                      When the resource owner is a person, it is referred to as an
+                      end-user.</td>
+                      <td>a teacher, student, administrator, or guardian</td>
+                  </tr><tr>
+                      <td>resource server</td>
+                      <td>The server hosting the protected resources, capable of accepting
+                      and responding to protected resource requests using access tokens.</td>
+                      <td>an InterSIS instance</td>
+                  </tr><tr>
+                      <td>client</td>
+                      <td>An application making protected resource requests on behalf of the
+                      resource owner and with its authorization.  The term "client" does
+                      not imply any particular implementation characteristics (e.g.,
+                      whether the application executes on a server, a desktop, or other
+                      devices).</td>
+                      <td>your web, iOS, Android, or desktop application</td>
+                  </tr><tr>
+                      <td>authorization server</td>
+                      <td>The server issuing access tokens to the client after successfully
+                      authenticating the resource owner and obtaining authorization.</td>
+                      <td>an InterSIS instance</td>
+                  </tr>
+              </table>
+
+              <p>Note that a single InterSIS instance serves the role of both resource and authorization server.</p>
+
+
+          </div>
+          <br style='line-height:40px'>
+
+          <div id=getting-started-header style='padding-top:20px'><h1>Getting Started</h1></div>
+          <hr>
+          <div id="getting-started-content">
+              <h2 id="getting-started-overview">Overview</h2>
+
+              <ol>
+                  <li>
+                      <p style="text-decoration: underline">Download an SDK</p>
+
+                      <p style="text-decoration:line-through;">Detailed information.</p>
+                  </li>
+                  <li>
+                      <p style="text-decoration: underline">Integrate Authentication</p>
+
+                      <p style="text-decoration:line-through;">Detailed information.</p>
+                  </li>
+                  <li>
+                      <p style="text-decoration: underline">Test Against Our Sample Instance</p>
+
+                      <p style="text-decoration:line-through;">Detailed information.</p>
+                  </li>
+                  <li>
+                      <p style="text-decoration: underline">Spin Up Your Own InterSIS Instance</p>
+
+                      <p style="text-decoration:line-through;">Detailed information.</p>
+                  </li>
+              </ol>
+
+              <h2 id="getting-started-developer-guides">Developer Guides</h2>
+
+              <p style="text-decoration:line-through;">Detailed developer guide links.</p>
+
+
+
+          </div>
+          <br style='line-height:40px'>
+
+
+
+          <h1 id=authentication-header style='padding-top:20px'>Authentication</h1>
+          <hr>
+          <div id="authentication-content">
+
+              <h2 id="single-sign-on">Single Sign-On</h2>
+
+              <p>New and returning users can "Sign on with InterSIS" and grant your application
+              permissioned access to their student information and accounts in seconds.</p>
+
+              <p>For users without an InterSIS instance, your own InterSIS backend can manage authentication and
+              across all of your applications, irrespective of their language or platform.</p>
+
+              <div class="alert alert-warning" role="alert"><p>If you've already got experience with OAuth 2.0, or
+              you're using a third party library to handle authentication, know that InterSIS does OAuth 2.0 <b>a
+              little different</b> than other providers.</p>
+
+              <p>Unlike Facebook or Google, there's not just one InterSIS authentication server; <b>anyone</b> can
+              run an InterSIS instance and host it <b>anywhere</b>. And instead of manually registering your client
+              with an InterSIS instance, your client registers <b>itself</b> automatically. That's legal under the
+              OAuth 2.0 spec, but you might not have seen it before. So if you already know your way around OAuth, read the
+              following sections on <i>Server Discovery</i> and <i>Client Registration</i>.</p>
+              </div>
+
+              <h2 id="server-discovery">Server Discovery</h2>
+
+              <p>A user's InterSIS instance may live anywhere:</p>
+
+              <ul style="margin-left:35px;padding-bottom:25px;font-style:italic">
+                  <li><p>An SIS developer be using their own servers to host their customers' SIS instances.</p></li>
+                  <li><p>A school district may host an InterSIS instance themselves to retain physical
+              control of student data.</p></li>
+                  <li><p>As a developer, you will have an InterSIS instance to provide storage and authentication
+              for any users who do not yet have their data on an InterSIS instance.</p></li>
+              </ul>
+
+              <p>When a new user with an existing InterSIS instance signs up for your services, they will need to tell
+              you where that instance lives. It may live at <code>intersis.exampleschooldistrict.org</code>, or at
+              <code>esd.intersis.sisprovider.com</code>, or any other url. If a new user does not have an InterSIS instance,
+              then you will need to direct them to your own instance.</p>
+
+              <h2 id="client-registration">Client Registration</h2>
+
+              <p>Once you know the location of a new user's InterSIS instance, your client must <i>register</i> with that
+              server.</p>
+
+              <p>The OAuth 2.0 specification requires that clients register with the authorization server before
+              directing end users to that server to authenticate. The endpoint at <code>/v.1/auth/clients/</code>
+              provides automated client registration with the authorization server. Your client must store the client
+              credentials returned by that call.</p>
+
+              <p>During client registration, your client must provide the authorization server with a space-separated list
+              of 'redirect-uris'. </p>
+
+              <div class="alert alert-warning" role="alert">
+                  <p>For a school or SIS provider, automated client registration with the InterSIS authorization server
+                  allows their users to easily confirm their identity for any educational software that is integrated
+                  with InterSIS.</p>
+
+                  <p>Those developers hosting an InterSIS instance to manage student data provided within their own software
+                  will generally <b>not</b> want to provide global authentication services for their users. These
+                  developers will wish to turn off automated client registration and register only their own applications
+                  manually. See your developer's guide for instructions.
+                  </p>
+              </div>
+
+              <p style="text-decoration:line-through">You should only register with one InterSIS instance <i>once</i>. When a teacher returns to log in
+              in a second time, or when a teacher's students visit the site to log in, you should be able to retrieve
+              the client id and client secret you received the from the initial client registration.</p>
+
+              <h2 id="user-authentication">User Authentication</h2>
+
+              <p style=>A client which is registered with the authentication server may direct end users to authenticate at
+              the endpoint <code>/o/authorize/</code>. Here's a (not yet encoded) URL that you might send your users to:</p>
+
+              <pre class="pre" style="overflow: auto;word-wrap: normal;white-space: pre;">
+GET /o/authorize/?redirect_uri=https://myapp.example.com/intersis/login/callback/&scope=read-rostering read-student-names&state=7s3478d790JJd&response_type=code&client_id=KJDuer7#7010Dj278DFhgjk3321ahdjdjfwuriqoAjkLL
+              </pre>
+
+              <p style="text-decoration:line-through">Talk about the <code>state</code> variable.</p>
+
+              <p>The following scopes are available for you to negotiate: </p>
+              <table class="table table-striped" style="margin-top:10px">
+                  <tr>
+                      <th class="col-md-3">Scope Name</th>
+                      <th class="col-md-9">Scope Description</th>
+                  </tr>
+                  <tr>
+                      <td>read-write</td><td>Read/Modify/Create any resources that the end user has permission to read/modify/create.</td>
+                  </tr><tr>
+                      <td>read</td><td>Read any SIS information that the end user has permission to access.</td>
+                  </tr><tr>
+                      <td>read-rostering</td><td>Read the end user's course names, course descriptions, and section rosters, not including student names or demographic information.</td>
+                  </tr><tr>
+                      <td>read-student-names</td><td>Read any student names and profile names the end user has permission to access.</td>
+                  </tr><tr>
+                      <td>read-student-profile-names</td><td>Read any student profile names  the end user has permission to access.</td>
+                  </tr>
+
+              </table>
+
+              <p>Note that if a client is <i>not</i> granted read access to student names, the resource server will
+              <i>still</i> provide the client with a unique ID string that may be used to distinguish among students.
+              The ID string which identifies a student-as-resource is identical to the ID string which identifies that
+              student as an end user.</p>
+
+              <table class="table table-striped">
+                  <tr>
+                      <th class="col-md-2">Client Type</th>
+                      <th class="col-md-7">Use</th>
+                      <th class="col-md-3">Appropriate Scopes</th>
+                  </tr>
+                  <tr>
+                      <td>Student Information System Frontend</td>
+                      <td>Teachers will need access to all rostering and demographic information, as well
+                      as the ability to enter grades.
+                      <br>School administrators will need to be able to add
+                      and remove students to their sites as well as to individual sections.
+                      <br>Guardians will
+                      need to be able to read their students' grades</td>
+                      <td>read-write</td>
+                  </tr><tr>
+                      <td>Skills Practice Web Client</td>
+                      <td>Teachers will need to assign tasks to and monitor the performance of their students, by name.
+                      Students will require the site to track and display their progress.</td>
+                      <td>read-rostering,<br>read-student-names</td>
+                  </tr><tr>
+                      <td>Educational Flash Game Site</td>
+                      <td>Students will require the site to keep track of their game scores.</td>
+                      <td>read-student-profile-names</td>
+                  </tr>
+              </table>
+
+              <h2 id="user-identification">User Identification</h2>
+
+              <p>Once the client has received an access token, it may request the identity of the end user at the
+              endpoint '/v.1/auth/user/'</p>
+
+              <h2 id="subsequent-visits">Subsequent Visits</h2>
+
+              <p style="text-decoration:line-through;">When a user returns for subsequent visits, you should be able to retrieve the client id and client
+              secret that you stored when registering your client with that user's InterSIS instance.</p>
+
+              <h2 id="authentication-endpoints">Authentication Endpoints</h2>
+
+              <div id="resource_clients_here">
+                  <ul id="resources"></ul>
+              </div>
+
+              <div id="resource_user_here">
+                  <ul id="resources"></ul>
+              </div>
+
+
+          </div>
+          <br style='line-height:80px'>
+
+
+          <div id=data-header style='padding-top:20px'><h1>Data</h1></div>
+          <hr>
+          <div id="data-content">
+              <p>This section discusses data resources exposed via a RESTful API.</p>
+              <br style='line-height:40px'>
+
+              <div id="resource_data_here">
+                  <ul id="resources"></ul>
+              </div>
+          </div>
+
+          <h1 id=account-management-header style='padding-top:20px'>Account Management</h1>
+          <hr>
+          <div id="account-management-content">
+              <p>End-points that provide e-mail and password management for end users and district administrators.</p>
+              <br style='line-height:40px'>
+              <div id="resource_users_here">
+                  <ul id="resources"></ul>
+              </div>
+          </div>
+          <br style='line-height:80px'>
+
+          <h1 id=roadmap-header style='padding-top:20px'>Development Roadmap</h1>
+          <hr>
+          <div id="roadmap-content">
+              <p>InterSIS is currently in development of version .70 of the InterSIS API.</p>
+
+              <h2>Version .70:</h2>
+
+              <p>Version .70 provides all of the features described above for storing student information, and providing end user
+              authentication via OAuth 2.0.</p>
+
+              <h2>Version .75:</h2>
+
+              <p>Following the release of  of version .70, the InterSIS Foundation will develop the SDKs and test integration.
+              Those API features found necessary during this process will be added to version .75.</p>
+
+              <h2>Version .80:</h2>
+
+              <p>Version .80 will include the ability for application clients to write gradebook items and scores to
+              the InterSIS server.</p>
+
+              <h2>Version 1.0:</h2>
+
+              <p>Following the release of version .80, we will freeze the InterSIS API specification and focus on
+              hardening the Django implementation against attack. Version 1.0 will be announced when this hardening
+              is complete. While awaiting version 1.0, developers will be able to take advantage
+              specification freeze to integrate InterSIS into their clients.</p>
+
+              <h2>Version 2.0:</h2>
+
+              <p>Following the completion of version 1.0, we will seek feedback from our partner developers. The bulk
+              of modifications to the InterSIS API specification will come from insights gained from this feedback.</p>
+              <p>Version 2.0 will also include the capacity for InterSIS to act as an authentication server for resources
+              housed on third-party resource servers.</p>
+
+              <h2>Version 3.0:</h2>
+
+              <p>Features included in version 3.0 of the InterSIS API specification will come from feedback from the
+              greater developer community.</p>
+
+
+          </div>
+      </div>
+
+      <div id="swagger-ui-container2" class="swagger-ui-wrap" style="padding-bottom:40px">
+        <div id="second">
+            <ul id="resources"></ul>
+        </div>
+      </div>
+
+  </div>
+
+</div>
+</div>​
+
+  <script src="include/js/shred.bundle.js" type="text/javascript"></script>
+  <script src='//code.jquery.com/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
+  <script src='include/js/jquery.slideto.min.js' type='text/javascript'></script>
+  <script src='include/js/jquery.wiggle.min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery.ba-bbq/1.2.1/jquery.ba-bbq.min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js' type='text/javascript'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js' type='text/javascript'></script>
+  <script src='include/js/swagger.js' type='text/javascript'></script>
+  <script src='include/js/swagger-ui.min.js' type='text/javascript'></script>
+  <!--<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js' type='text/javascript'></script>-->
+  <script type="text/javascript">
+    $(function () {
+      window.swaggerUi = new SwaggerUi({
+      url: "http://intersis.org/docs/api-docs/",
+      apiKey: "",
+      dom_id: "swagger-ui-container",
+      supportedSubmitMethods: ["get", "post", "put", "patch", "delete"],
+      sorter : "method",
+      onComplete: function(swaggerApi, swaggerUi){
+        log("Loaded SwaggerUI");
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+        rebuild_ui();
+      },
+      onFailure: function(data) {
+        log("Unable to Load SwaggerUI");
+      },
+      docExpansion: "{{ swagger_settings.doc_expansion }}",
+    });
+
+    $('#input_apiKey').change(function() {
+      var key = $('#input_apiKey')[0].value;
+      log("key: " + key);
+      if(key && key.trim() != "") {
+        console.log("added key " + key);
+        window.authorizations.add("key", new ApiKeyAuthorization("Authorization", "Token " + key, "header"));
+      }
+    });
+
+    window.swaggerUi.load();
+
+  });
+  var which_load = 0;
+  function rebuild_ui() {
+      which_load++;
+      if (which_load >= 4) {
+          $("#second #resources").empty();
+      }
+      if (which_load >= 3) {
+
+          $("#swagger-ui-container #resource_clients").appendTo("#resource_clients_here #resources");
+
+          $("#swagger-ui-container #resource_sites").appendTo("#resource_data_here #resources");
+          $("<br style='line-height:40px'>").appendTo("#second #resources");
+          $("#swagger-ui-container #resource_staff").appendTo("#resource_data_here #resources");
+          $("#swagger-ui-container #resource_students").appendTo("#resource_data_here #resources");
+          $("#swagger-ui-container #resource_guardians").appendTo("#resource_data_here #resources");
+          $("<br style='line-height:40px'>").appendTo("#resource_data_here #resources");
+          $("#swagger-ui-container #resource_courses").appendTo("#resource_data_here #resources");
+          $("#swagger-ui-container #resource_sections").appendTo("#resource_data_here #resources");
+          $("<br style='line-height:80px'>").appendTo("#resource_data_here #resources");
+
+          $("#swagger-ui-container #resource_users").appendTo("#resource_users_here #resources");
+
+      }
+
+  }
+
+
+
+  </script>
+
+</body>
+
+</html>
+{% endspaceless %}

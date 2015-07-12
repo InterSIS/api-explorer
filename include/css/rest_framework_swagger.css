@@ -1,0 +1,44 @@
+#django-rest-swagger {
+    background: #3c7683;
+    color: #eee; 
+    text-align:right; 
+    padding: 7px 0; 
+    font-size: 0.8em
+}
+#django-rest-swagger a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.left-nav-primary {
+    width:70%;
+    margin:17px 10px 3px 10px;
+}
+
+.left-nav-secondary {
+    width:70%;
+    margin:5px 5px 5px 20px;
+}
+
+h1 {
+    font-size:1.9em !important;
+}
+
+h2 {
+    font-size:1.65em !important;
+    padding-top:20px !important;
+    padding-bottom:10px !important;
+}
+
+p {
+    font-size:1.15em !important;
+}
+
+ol {
+    list-style: decimal !important;
+    font-size:1.15em !important;
+}
+
+pre {
+    margin-bottom: 5px !important;
+}
