@@ -1,0 +1,3 @@
+Any files herein bearing a software license are licensed for redistribution under that license.
+
+All other files are not licensed for re-use.
