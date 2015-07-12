@@ -1,3 +1,3 @@
 # api-explorer
 API explorer and documentation for InterSIS.
-d
+This proposal should be automatically merged.
