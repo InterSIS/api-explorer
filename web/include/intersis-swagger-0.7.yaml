@@ -1,0 +1,401 @@
+---
+swagger: '2.0'
+
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  version: v0.7
+  title: Intersis API
+  description: |
+    Description of the InterSIS API
+
+    This description can cover multiple lines.
+
+################################################################################
+#                  Host, Base Path, Schemes and Content Types                  #
+################################################################################
+host: server.intersis.org
+basePath: /v0.7
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+
+################################################################################
+#                                  Security                                    #
+################################################################################
+securityDefinitions:
+  oauth:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: /o/authorize/?redirect_uri=CALLBACK_URI&scope=SCOPES&state=STATE&client_id=CLIENT_ID
+    scopes:
+      read-write: to read/modify/create any resources on a user's behalf.
+      read: to read any resources on a user's behalf.
+      read-rostering: |
+        to read the the user's course names, course descriptions, and section rosters,
+        not including student names or demographic information.
+      read-student-names: read any student names or profile names on the user's behalf
+      read-student-profile-names: read any student names on the user's behalf
+  key:
+    type: apiKey
+    in: query
+    name: access_token
+security:
+  - oauth:
+    - read-write
+    - read
+    - read-rostering
+    - read-student-names
+    - read-student-profile-names
+  - key: []
+
+################################################################################
+#                                   Parameters                                 #
+################################################################################
+parameters:
+  id:
+    name: id
+    in: path
+    description: The resource identification string
+    type: string
+    required: true
+
+################################################################################
+#                                           Paths                              #
+################################################################################
+paths:
+  /guardians:
+    get:
+      security:
+        - oauth:
+          - read-write
+          - read
+      tags:
+        - guardians
+      description: List all guardian objects available to you.
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Guardian"
+    post:
+      operationId: addGuardian
+      description: Create a guardian object.
+      parameters:
+        - in: formData
+          name: family_names
+          description: The guardian's family name(s)
+          required: true
+          type: string
+        - in: formData
+          name: given_names
+          description: The guardians given name(s)
+          required: true
+          type: string
+        - in: formData
+          name: email
+          description: The guardian's email address
+          required: false
+          type: string
+        - in: formData
+          name: hispanic_ethnicity
+          description: The guardian's hispanic ethnicity
+          required: false
+          type: boolean
+        - in: formData
+          name: sex
+          description: The guardian's sex
+          required: false
+          type: string
+          enum:
+            - female
+            - male
+        - in: formData
+          name: race
+          description: The guardian's race
+          required: false
+          type: string
+      security:
+        - oauth:
+          - read-write
+      tags:
+        - guardians
+      responses:
+        200:
+          description: The guardian object
+          schema:
+            $ref: '#/definitions/Guardian'
+                
+  /guardians/{id}:
+    parameters:
+      - $ref: '#/parameters/id'
+    get:
+      security:
+        - oauth:
+          - read
+      tags:
+        - guardians
+      description: Get basic information about a guardian.
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Guardian'
+    patch:
+      operationId: addGuardian
+      description: Create a guardian object.
+      parameters:
+        - in: formData
+          name: family_names
+          description: The guardian's family name(s)
+          required: false
+          type: string
+        - in: formData
+          name: given_names
+          description: The guardians given name(s)
+          required: false
+          type: string
+        - in: formData
+          name: email
+          description: The guardian's email address
+          required: false
+          type: string
+        - in: formData
+          name: hispanic_ethnicity
+          description: The guardian's hispanic ethnicity
+          required: false
+          type: boolean
+        - in: formData
+          name: sex
+          description: The guardian's sex
+          required: false
+          type: string
+          enum:
+            - female
+            - male
+        - in: formData
+          name: race
+          description: The guardian's race
+          required: false
+          type: string
+      security:
+        - oauth:
+          - read-write
+      tags:
+        - guardians
+      responses:
+        200:
+          description: The guardian object
+          schema:
+            $ref: '#/definitions/Guardian'
+    delete:
+      tags:
+        - guardians
+      summary: Deletes a guardian
+      description: ""
+      operationId: deleteGuardian
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        "204":
+          description: Guardian deleted
+      security:
+        - oauth:
+          - read-write
+            
+  /staff:
+    get:
+      security:
+        - oauth:
+          - read-write
+          - read
+          - read-rostering
+      tags:
+        - staff
+      description: List all staff objects available to you.
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Staff'
+
+################################################################################
+#                                 Definitions                                  #
+################################################################################
+definitions:
+  Person:
+    properties:
+      id:
+        type: string
+      profile_name:
+        type: string
+      family_names:
+        type: string
+      given_names:
+        type: string
+      email:
+        type: string
+      hispanic_ethnicity:
+        type: boolean
+      sex:
+        type: string
+        enum:
+          - female
+          - male
+      race:
+        type: string
+      user:
+        type: object
+        $ref: '#/definitions/User'
+  Student:
+    description: Model of a student
+    allOf:
+    - $ref: '#/definitions/Person'
+    - type: object
+      properties:
+        school_student_id:
+          type: string
+        state_student_id:
+          type: string
+        sites:
+          type: array
+          items:
+            $ref: '#/definitions/Site'
+        sections:
+          type: array
+          items:
+            $ref: '#/definitions/Section'
+        guardians:
+          type: array
+          items:
+            $ref: '#/definitions/Guardian'
+  Staff:
+    description: Model of a staff member
+    allOf:
+    - $ref: '#/definitions/Person'
+    - properties:
+        role:
+          type: string
+        sites:
+          type: array
+          items:
+            $ref: '#/definitions/Site'
+        sections:
+          type: array
+          items:
+            $ref: '#/definitions/Section'
+  Guardian:
+    description: Model of a guardian
+    allOf:
+    - $ref: '#/definitions/Person'
+    - type: object
+      properties:
+        students:
+          type: array
+          items:
+            $ref: '#/definitions/Reference'
+        
+  Site:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      address_line_1:
+        type: string
+      address_line_2:
+        type: string
+      city:
+        type: string
+      state:
+        $ref: '#/definitions/states'
+      postal_code:
+        type: string
+  Reference:
+    type: object
+    properties:
+      uri:
+        type: string
+  Section:
+    description: A course section
+    properties:
+      user_name:
+        type: string
+      full_name:
+        type: string
+      id:
+        type: integer
+      profile_picture:
+        type: string
+  User:
+    description: A user
+    properties:
+      id:
+        type: string
+  
+  states:
+    type: string
+    enum:
+      - AK
+      - AL
+      - AR
+      - AZ
+      - CA
+      - CO
+      - CT
+      - DC
+      - DE
+      - FL
+      - GA
+      - HI
+      - IA
+      - ID
+      - IL
+      - IN
+      - KS
+      - KY
+      - LA
+      - MA
+      - MD
+      - ME
+      - MI
+      - MN
+      - MO
+      - MS
+      - MT
+      - NC
+      - ND
+      - NE
+      - NH
+      - NJ
+      - NM
+      - NV
+      - NY
+      - OH
+      - OK
+      - OR
+      - PA
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VA
+      - VT
+      - WA
+      - WI
+      - WV
+      - WY
