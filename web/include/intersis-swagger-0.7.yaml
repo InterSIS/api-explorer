@@ -148,8 +148,8 @@ paths:
           schema:
             $ref: '#/definitions/Guardian'
     patch:
-      operationId: addGuardian
-      description: Create a guardian object.
+      operationId: updateGuardian
+      description: Update a guardian object.
       parameters:
         - in: formData
           name: family_names
