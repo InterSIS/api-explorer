@@ -35,7 +35,7 @@
 .swagger-section pre .tex .command,
 .swagger-section pre .tex .special,
 .swagger-section pre .erlang_repl .function_or_atom,
-.swagger-section pre .markdown .header {
+.swagger-section pre .header {
   color: #800;
 }
 .swagger-section pre .comment,
@@ -308,14 +308,14 @@
 }
 .swagger-section .swagger-ui-wrap .info_description {
   padding-bottom: 10px;
-  font-size: 15px;
+  /*font-size: 15px;*/
 }
-.swagger-section .swagger-ui-wrap .markdown ol li,
-.swagger-section .swagger-ui-wrap .markdown ul li {
-  padding: 3px 0px;
-  line-height: 1.4em;
-  color: #333333;
-}
+/*.swagger-section .swagger-ui-wrap .markdown ol li,*/
+/*.swagger-section .swagger-ui-wrap .markdown ul li {*/
+  /*padding: 3px 0px;*/
+  /*line-height: 1.4em;*/
+  /*color: #333333;*/
+/*}*/
 .swagger-section .swagger-ui-wrap form.formtastic fieldset.inputs ol li.string input,
 .swagger-section .swagger-ui-wrap form.formtastic fieldset.inputs ol li.url input,
 .swagger-section .swagger-ui-wrap form.formtastic fieldset.inputs ol li.numeric input {
@@ -577,12 +577,12 @@
   color: #888888;
   font-style: italic;
 }
-.swagger-section .swagger-ui-wrap .markdown h3 {
-  color: #547f00;
-}
-.swagger-section .swagger-ui-wrap .markdown h4 {
-  color: #666666;
-}
+/*.swagger-section .swagger-ui-wrap .markdown h3 {*/
+  /*color: #547f00;*/
+/*}*/
+/*.swagger-section .swagger-ui-wrap .markdown h4 {*/
+  /*color: #666666;*/
+/*}*/
 .swagger-section .swagger-ui-wrap .markdown pre {
   font-family: "Anonymous Pro", "Menlo", "Consolas", "Bitstream Vera Sans Mono", "Courier New", monospace;
   background-color: #fcf6db;
@@ -1047,13 +1047,13 @@
   font-size: 1.1em;
   padding: 10px 0 10px 0;
 }
-.swagger-section .swagger-ui-wrap .markdown ol,
-.swagger-section .swagger-ui-wrap .markdown ul {
-  font-family: "Droid Sans", sans-serif;
-  margin: 5px 0 10px;
-  padding: 0 0 0 18px;
-  list-style-type: disc;
-}
+/*.swagger-section .swagger-ui-wrap .markdown ol,*/
+/*.swagger-section .swagger-ui-wrap .markdown ul {*/
+  /*font-family: "Droid Sans", sans-serif;*/
+  /*margin: 5px 0 10px;*/
+  /*padding: 0 0 0 18px;*/
+  /*list-style-type: disc;*/
+/*}*/
 .swagger-section .swagger-ui-wrap form.form_box {
   background-color: #ebf3f9;
   border: 1px solid #c3d9ec;
