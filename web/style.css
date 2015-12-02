@@ -5,3 +5,12 @@
 #explore {
     background-color: #f7d524 !important;
 }
+
+p.spec::before {
+    content: "Specification: ";
+}
+
+p.spec {
+    text-decoration:underline;
+}
+

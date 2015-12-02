@@ -12,6 +12,16 @@ intersis_explorer = (function() {
                 $('<div class="container" id="resources_container"></div>').append(list)
             );
         });
+
+        $("#api_info p:contains('{{spec')").each(function(){
+            var text;
+
+            text = $(this).text().replace("{{spec #", "").replace("}}", "");
+            text = text.split(":").pop();
+
+            $(this).addClass("spec");
+            $(this).text(text);
+        });
     };
 
     return {
