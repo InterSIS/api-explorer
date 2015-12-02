@@ -14,12 +14,14 @@ intersis_explorer = (function() {
         });
 
         $("#api_info p:contains('{{spec')").each(function(){
-            var text;
+            var text, tag;
 
-            text = $(this).text().replace("{{spec #", "").replace("}}", "");
-            text = text.split(":").pop();
+            text = $(this).text().replace("{{spec #", "").replace("}}", "").split(":");
 
-            $(this).addClass("spec");
+            tag = text.shift();
+            text = text.join("");
+
+            $(this).addClass("spec").addClass(tag);
             $(this).text(text);
         });
     };
